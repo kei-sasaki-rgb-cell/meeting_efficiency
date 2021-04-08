@@ -2,14 +2,44 @@
 <html>
   <head>
     <title>MeetingEfficiency</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <header>
+      <div class="fl">
+          <div class="application-name">
+            <h1>アプリ名がここに入る(後で決める)</h1>
+          </div>
+        <% if user_signed_in?%>
+          <% @user.each do |user| %>
+            <div class="sign-in-user">
+              <div class="user-nickname">
+                <p><%= "#{user.nickname}さん" %></p>
+              </div>
+                <% end %>
+              <div class="log-out">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              </div>
+            </div>
+          <% else %>
+            <div class="new-registration-or-login">
+              <div class="new-registration">
+                <%= link_to "新規登録", new_user_registration_path %>
+              </div>
+              <div class="log-in">
+                <%= link_to "ログイン", new_user_session_path %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </header>
+      <%= yield %>
+    <footer>
+    </footer>
   </body>
 </html>
