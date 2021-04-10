@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- BootstrapのCSS読み込み -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- jQuery読み込み -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- BootstrapのJS読み込み -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<meta charset="utf-8">
+<!-- BootstrapのCSS読み込み -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- jQuery読み込み -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- BootstrapのJS読み込み -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<head>
+<meta charset="utf-8">
+<!-- BootstrapのCSS読み込み -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- jQuery読み込み -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- BootstrapのJS読み込み -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<%# bootstrapサンプル %>
+<button type="button" class="btn btn-primary">Blue</button>
+<button type="button" class="btn btn-danger">Red</button>
+
+<%# bootstrapサンプル %>
+<header style="background-color:gray">Header</header>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-2" style="background-color:red;">Red</div>
+<div class="col-sm-8" style="background-color:blue;">Blue</div>
+<div class="col-sm-2" style="background-color:yellow;">Yellow</div>
+</div>
+</div>
+<footer style="background-color:gray">Footer</footer>
+
+<form class="form-inline">
+<div class="form-group">
+<label for="exampleInputEmail1">Email</label>
+<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+</div>
+<div class="form-group">
+<label for="exampleInputPassword1">Password</label>
+<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+</div>
+<button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<div class="posts-row">
+  <div class="container">
+    <h3>投稿する</h3>
+    <%= form_with(model: @post, local: true) do |form| %>
+      <%= form.text_field :text, placeholder: "Text" %>
+      <%#= form.collection_select(保存されるカラム名, オブジェクトの配列, カラムに保存される項目, 選択肢に表示されるカラム名, オプション, htmlオプション) %>
+      <%= form.collection_select(:content_id, Content.all, :id, :name, {}, {class:"select-box", id:"content-fee-status"})%>
+      <%= form.collection_select(:meeting_time_id, MeetingTime.all, :id, :name, {}, {class:"select-box", id:"time-fee-status"})%>
+      <%= form.collection_select(:progress_id, Progress.all, :id, :name, {}, {class:"select-box", id:"progress-fee-status"})%>
+      <%= form.collection_select(:information_id, Information.all, :id, :name, {}, {class:"select-box", id:"information-fee-status"})%>
+      <%= form.collection_select(:people_id, Person.all, :id, :name, {}, {class:"select-box", id:"people-fee-status"})%>
+      <%#= form.collection_select(保存されるカラム名, オブジェクトの配列, カラムに保存される項目, 選択肢に表示されるカラム名, オプション, htmlオプション) %>
+      <%= form.submit "投稿する" %>
+    <% end %>
+  </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
