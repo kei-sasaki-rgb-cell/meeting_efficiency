@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user, optional: true
-  has_one_attached :image
+  has_one_attached :image #テーブルに画像ファイルを紐付け
   has_many :comments
 
 

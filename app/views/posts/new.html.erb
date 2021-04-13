@@ -27,43 +27,30 @@
 </head>
 <body>
 
-<%# bootstrapサンプル %>
-<button type="button" class="btn btn-primary">Blue</button>
-<button type="button" class="btn btn-danger">Red</button>
-
-<%# bootstrapサンプル %>
-<header style="background-color:gray">Header</header>
-<div class="container-fluid">
-<div class="row">
-<div class="col-sm-2" style="background-color:red;">Red</div>
-<div class="col-sm-8" style="background-color:blue;">Blue</div>
-<div class="col-sm-2" style="background-color:yellow;">Yellow</div>
-</div>
-</div>
-<footer style="background-color:gray">Footer</footer>
-
-<form class="form-inline">
-<div class="form-group">
-<label for="exampleInputEmail1">Email</label>
-<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-</div>
-<div class="form-group">
-<label for="exampleInputPassword1">Password</label>
-<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-</div>
-<button type="submit" class="btn btn-default">Submit</button>
-</form>
-
 <div class="posts-row">
   <div class="container">
     <h3>投稿する</h3>
     <%= form_with(model: @post, local: true) do |form| %>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%#= image_tag @post.image.variant(resize: "100, 100"), class: "post-image" if @post.image.attached? %> <%#画像の表示編集機能に書く%>
+        <%= form.file_field :image, multiple: true, id:"post-image" %> <%#画像の投稿フォーム%>
+      </div>
+
+      <p>会議に関しての感想など</p>
       <%= form.text_field :text, placeholder: "Text" %>
       <%#= form.collection_select(保存されるカラム名, オブジェクトの配列, カラムに保存される項目, 選択肢に表示されるカラム名, オプション, htmlオプション) %>
+      <p>会議の内容</p>
       <%= form.collection_select(:content_id, Content.all, :id, :name, {}, {class:"select-box", id:"content-fee-status"})%>
+      <p>会議にかかった時間</p>
       <%= form.collection_select(:meeting_time_id, MeetingTime.all, :id, :name, {}, {class:"select-box", id:"time-fee-status"})%>
+      <p>会議の進め方</p>
       <%= form.collection_select(:progress_id, Progress.all, :id, :name, {}, {class:"select-box", id:"progress-fee-status"})%>
+      <p>会議での情報量</p>
       <%= form.collection_select(:information_id, Information.all, :id, :name, {}, {class:"select-box", id:"information-fee-status"})%>
+      <p>会議での参加人数</p>
       <%= form.collection_select(:people_id, Person.all, :id, :name, {}, {class:"select-box", id:"people-fee-status"})%>
       <%#= form.collection_select(保存されるカラム名, オブジェクトの配列, カラムに保存される項目, 選択肢に表示されるカラム名, オプション, htmlオプション) %>
       <%= form.submit "投稿する" %>

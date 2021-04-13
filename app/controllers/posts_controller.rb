@@ -8,11 +8,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    #binding.pry
     @post = Post.new(post_params)
     if @post.save
       test
-      binding.pry
+      #binding.pry
       redirect_to root_path
     else
       render :new
@@ -22,10 +21,11 @@ class PostsController < ApplicationController
   private
 
   def post_params #postモデルの情報を受け取るように設定
-    params.require(:post).permit(:text,:content_id,:meeting_time_id,:progress_id,:information_id,:people_id)
+    params.require(:post).permit(:image,:text,:content_id,:meeting_time_id,:progress_id,:information_id,:people_id)
   end
 
-  def test
-    sum = @post.content_id + @post.meeting_time_id + @post.progress_id + @post.information_id + @post.people_id
+  def test #アクティブハッシュのid同士を足す
+    sum = (@post.content_id - 1) + (@post.meeting_time_id - 1) + (@post.progress_id - 1) + (@post.information_id - 1) + (@post.people_id - 1)
   end
+  
 end
