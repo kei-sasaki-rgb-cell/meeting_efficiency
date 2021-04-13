@@ -1,8 +1,17 @@
 <div class="common-back-image">
   <%= image_tag 'back-image4.jpg', alt: "画像", class: "back-ground-image" %>
+
   <% if user_signed_in?%>
     <p><%= "#{current_user.nickname}さん" %></p>
     <%= link_to "編集"%>
     <%= link_to "投稿画面へ", new_post_path, class: "new-post"%>
   <% end %>
 </div>
+
+</div>
+
+<% if user_signed_in? %>
+  <%#=後でパスの指定をすること%>
+    <%= link_to "編集"%>
+    <%= link_to "投稿する", new_post_path%>
+<% end %>

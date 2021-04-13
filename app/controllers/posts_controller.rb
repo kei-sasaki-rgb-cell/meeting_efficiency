@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       test
-      #binding.pry
+        #binding.pry
       redirect_to root_path
     else
       render :new
