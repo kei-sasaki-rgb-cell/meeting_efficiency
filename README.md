@@ -15,14 +15,14 @@
 
 ## postsテーブル
 
-| Colmun           | Type           | Option            |
-| ---------------- | -------------- | ----------------- |
-| text             | text           |                   |
-| contents         | integer        | null: false       |
-| time_id          | integer        | null: false       |
-| progress_id      | integer        | null: false       |
-| information_id   | integer        | null: false       |
-| people_id        | integer        | null: false       |
+| Colmun                   | Type           | Option            |
+| ------------------------ | -------------- | ----------------- |
+| text                     | text           |                   |
+| contents                 | integer        | null: false       |
+| meeting_time_id          | integer        | null: false       |
+| progress_id              | integer        | null: false       |
+| information_id           | integer        | null: false       |
+| people_id                | integer        | null: false       |
 
 ### Association
 
