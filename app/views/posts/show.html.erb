@@ -1,1 +1,20 @@
 <p>詳細ページ表示</p>
+
+<div class="common-back-image">
+    <%= image_tag 'back-image4.jpg', alt: "画像", class: "back-ground-image" %>
+  <div class="contents-row">
+      <div class="content_post">
+        <%= image_tag @post.image.variant(resize: "100x100"), class: "post-image" if @post.image.attached? %> <%#画像の表示編集機能に書く%>
+          <% if user_signed_in?%>
+          <ul class="more_list">
+            <li>
+              <%= "#{current_user.nickname}さん" %>
+              <%= "#{@post.title}の会議内容" %>
+            </li>
+              <%= link_to "編集", edit_post_path(@post.id) %>
+              <%= link_to "詳細", post_path(@post.id)%>
+          </ul>
+          <% end %>
+      </div>
+  </div>
+</div>
