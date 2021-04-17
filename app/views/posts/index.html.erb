@@ -10,8 +10,8 @@
               <%= "#{current_user.nickname}さん" %>
               <%= "#{post.title}の会議内容" %>
             </li>
-              <%= link_to "編集ページ", edit_post_path(post.id) %>
-              <%= link_to "詳細ページ", post_path(post.id)%>
+              <%= link_to "編集", edit_post_path(post.id) %>
+              <%= link_to "詳細", post_path(post.id)%>
           </ul>
           <% end %>
       </div>
