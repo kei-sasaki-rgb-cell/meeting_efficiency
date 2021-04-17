@@ -13,12 +13,13 @@
     <header>
       <div class="fl">
           <div class="application-name">
-            <h1>アプリ名がここに入る(後で決める)</h1>
+            <h1>MeetingEfficiency</h1>
           </div>
         <% if user_signed_in?%>
               <div class="sign-in-user">
                 <div class="log-out">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                  <%= link_to "投稿画面", new_post_path, class: "new-post"%>
                 </div>
               </div>
               <% else %>
