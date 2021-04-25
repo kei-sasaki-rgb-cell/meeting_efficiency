@@ -26,6 +26,7 @@
           <%= form.hidden_field :evaluation, id: :review_star %>
             <!-- 評価javascript -->
             <script>
+            $(function () { //星を表示
               $('#star').raty({
                 size     : 36,
                 starOff:  '<%= asset_path('star-off.png') %>',
@@ -34,6 +35,7 @@
                 scoreName: 'comment[evaluation]',   // commentモデルevaluationカラムへの保存
                 half: true,   // 星半分の入力
               });
+            });
             </script>
         </div>
       <%# jQueryの使用ここまで %>
@@ -46,8 +48,22 @@
       <h4>＜コメント一覧＞</h4> 
       <% @comments.each do |comment| %>
         <p>
-          <%# <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}"：</strong> %>
           <%= comment.text %>
+          <div id="star-rate-<%= comment.id %>"></div>
+            <script>
+              $(function () { //星を表示
+                $('#star-rate-<%= comment.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,   // 星半分の入力
+                  readOnly: true, //読み込み専用（入力できない）
+                  score: <%= comment.evaluation %>, //星評価の表示
+                });
+              });
+            </script>
+          <%= comment.evaluation%>
         </p>
       <% end %>
     </div>
