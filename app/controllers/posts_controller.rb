@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :set_post, only: [:edit, :show]
+
   def index
     @users = User.all
     @posts = Post.all
@@ -26,11 +28,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comments = @post.comments.includes(:user)
   end
 
   def edit
-    @post = Post.find(params[:id])
+    
   end
 
   def update
@@ -46,6 +49,10 @@ class PostsController < ApplicationController
 
   def test #アクティブハッシュのid同士を足す
     sum = (@post.content_id - 1) + (@post.meeting_time_id - 1) + (@post.progress_id - 1) + (@post.information_id - 1) + (@post.people_id - 1)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
   
 end
