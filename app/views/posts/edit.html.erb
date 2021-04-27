@@ -42,7 +42,7 @@
       <p>何に関しての会議を行ったか</p>
       <%= form.text_field :title, placeholder: "Title" %>
       <p>会議に関しての感想など</p>
-      <%= form.text_area :text, placeholder: "Text" %>
+      <%= form.text_area :text, placeholder: "Text", :size=>"100" %>
       <%#= form.collection_select(保存されるカラム名, オブジェクトの配列, カラムに保存される項目, 選択肢に表示されるカラム名, オプション, htmlオプション) %>
       <p>会議の内容</p>
       <%= form.collection_select(:content_id, Content.all, :id, :name, {}, {class:"select-box", id:"content-fee-status"})%>

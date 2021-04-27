@@ -15,6 +15,9 @@
           <% end %>
       </div>
   </div>
+
+  <p><b><%= "自己評価した点数は#{set_sum}点です" %></b></p>
+
   <div class="container">
     <% if user_signed_in? %>
       <%= form_with(model: [@post, @comment], local: true) do |form| %>
