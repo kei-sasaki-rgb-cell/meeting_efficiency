@@ -1,5 +1,5 @@
-<div class="common-back-image">
-    <%= image_tag 'back-image4.jpg', alt: "画像", class: "back-ground-image" %>
+  <div class="common-back-image">
+    <%#= image_tag 'back-image4.jpg', alt: "画像", class: "back-ground-image" %>
   <div class="contents-row">
       <div class="content_post">
         <%= image_tag @post.image.variant(resize: "100x100"), class: "post-image" if @post.image.attached? %> <%#画像の表示編集機能に書く%>
