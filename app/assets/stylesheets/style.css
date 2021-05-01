@@ -111,6 +111,7 @@ footer{
   bottom: 0;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 /* index.html.erb */
@@ -122,6 +123,58 @@ footer{
   margin-top: 0;
 }
 
+/* 画像の幅と高さを固定 */
 .post-image{
   height: 100px;
+  width: 100px;
+}
+
+/* 投稿画面 */
+.posts-row{
+  text-align: center;
+}
+
+/* 「会議に関しての感想など」の枠の大きさ */
+#post_text{
+  height: 200px;
+}
+
+/* 自己評価点 */
+.score{
+  border-top: 2px solid rgb(110, 110, 110);
+  border-bottom: 2px solid rgb(110, 110, 110);
+  text-align: center;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 点数の色 */
+.score_color{
+  color: dodgerblue;
+  font-size: 20px;
+}
+
+/* コメント一覧 */
+.comments{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* コメントの箇所 */
+.comment{
+  text-align: center;
+}
+
+/* コメント枠の大きさ */
+#comment_text{
+  height: 200px;
+}
+
+.comment-list{
+  display: inline-block;
+  border: 2px solid rgb(110, 110, 110);
+  width: 500px;
+  margin: 5px;
 }

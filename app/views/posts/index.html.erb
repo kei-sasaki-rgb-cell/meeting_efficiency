@@ -5,7 +5,7 @@
         <% if user_signed_in?%>
         <div class="more_list">
           <li class="list">
-            <p class="user-name"><%= "#{current_user.nickname}さん" %></p>
+            <p class="user-name"><%= "投稿者: #{post.user.nickname}さん" %></p>
             <p><%= "#{post.title}の会議内容" %></p>
           </li>
             <div class="link">

@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   private
 
   def post_params #postモデルの情報を受け取るように設定
-    params.require(:post).permit(:image, :title, :text, :content_id, :meeting_time_id, :progress_id, :information_id, :people_id)
+    params.require(:post).permit(:image, :title, :text, :content_id, :meeting_time_id, :progress_id, :information_id, :people_id).merge(user_id: current_user.id)
   end
 
   def set_sum #アクティブハッシュのid同士を足す
