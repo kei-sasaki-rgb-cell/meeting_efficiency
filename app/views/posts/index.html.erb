@@ -9,9 +9,11 @@
             <p><%= "#{post.title}の会議内容" %></p>
           </li>
             <div class="link">
-              <%= link_to "編集", edit_post_path(post.id) %>
-              <%= link_to "詳細", post_path(post.id)%>
-              <%= link_to "削除", post_path(post.id), method: :delete %>
+                <%= link_to "編集", edit_post_path(post.id) %>
+                <%= link_to "詳細", post_path(post.id)%>
+              <% if current_user.id == post.user_id %>
+                <%= link_to "削除", post_path(post.id), method: :delete %>
+              <% end %>
             </div>
         </div>
         <% end %>

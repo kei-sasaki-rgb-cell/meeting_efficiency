@@ -26,7 +26,7 @@
       <p>会議での参加人数</p>
         <%= form.collection_select(:people_id, Person.all, :id, :name, {}, {class:"select-box", id:"people-fee-status"})%>
       <%#= form.collection_select(保存されるカラム名, オブジェクトの配列, カラムに保存される項目, 選択肢に表示されるカラム名, オプション, htmlオプション) %>
-      <%= form.submit "投稿する" %>
+      <p><%= form.submit "投稿する", class:"form_button" %></p>
     <% end %>
   </div>
 </div>

@@ -6,11 +6,13 @@
           <% if user_signed_in?%>
           <ul class="more_list">
             <li>
-              <p><%= "#{current_user.nickname}さん" %></p>
+              <p><%= "投稿者: #{@post.user.nickname}さん" %></p>
               <p><%= "#{@post.title}の会議内容" %></p>
             </li>
-              <%= link_to "編集", edit_post_path(@post.id) %>
-              <%= link_to "削除", post_path(@post.id), method: :delete %>
+              <% if current_user.id == @post.user_id %>
+                <%= link_to "編集", edit_post_path(@post.id) %>
+                <%= link_to "削除", post_path(@post.id), method: :delete %>
+              <% end %>
           </ul>
           <% end %>
       </div>
@@ -27,28 +29,30 @@
   <div class="comment">
     <div class="container">
       <% if user_signed_in? %>
-        <%= form_with(model: [@post, @comment], local: true) do |form| %>
-          <p><%= form.text_area :text, placeholder: "コメントを書いてください", :size=>"100" %></p>
-        <%# jQueryの使用するHTMLの中でJavaScriptを読み込む %>
-          <div class="form-group-row" id="star">
-            <%= form.label :evaluation, "星評価:" %>
-            <%= form.hidden_field :evaluation, id: :review_star %>
-              <!-- 評価javascript -->
-              <script>
-              $(function () { //星を表示
-                $('#star').raty({
-                  size     : 36,
-                  starOff:  '<%= asset_path('star-off.png') %>',
-                  starOn : '<%= asset_path('star-on.png') %>',
-                  starHalf: '<%= asset_path('star-half.png') %>',
-                  scoreName: 'comment[evaluation]',   // commentモデルevaluationカラムへの保存
-                  half: true,   // 星半分の入力
+        <% if current_user.id != @post.user_id %>
+          <%= form_with(model: [@post, @comment], local: true) do |form| %>
+            <p><%= form.text_area :text, placeholder: "コメントを書いてください", :size=>"100" %></p>
+            <%# jQueryの使用するHTMLの中でJavaScriptを読み込む %>
+            <div class="form-group-row" id="star">
+              <%= form.label :evaluation, "星評価:(任意)" %>
+              <%= form.hidden_field :evaluation, id: :review_star %>
+                <!-- 評価javascript -->
+                <script>
+                $(function () { //星を表示
+                  $('#star').raty({
+                    size     : 36,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    scoreName: 'comment[evaluation]',   // commentモデルevaluationカラムへの保存
+                    half: true,   // 星半分の入力
+                  });
                 });
-              });
-              </script>
-          </div>
-        <%# jQueryの使用ここまで %>
-          <p><%= form.submit "投稿する" %></p>
+                </script>
+            </div>
+            <%# jQueryの使用ここまで %>
+            <p><%= form.submit "投稿する" %></p>
+          <% end %>
         <% end %>
       <% else %>
         <strong><p>*コメントの投稿には新規登録/ログインが必要です*</p></strong>
@@ -75,7 +79,9 @@
                   });
                 </script>
               <%= comment.evaluation%>
-              <%=link_to "コメントを削除", post_comment_path(comment.post.id, comment.id), method: :delete %>
+                <% if current_user.id == comment.user_id %> <%#もしログインしているユーザーidとコメントしているユーザーidと一致していたら%>
+                  <%=link_to "コメントを削除", post_comment_path(comment.post.id, comment.id), method: :delete %>
+                <% end %>
             </p>
           </div>
         <% end %>
