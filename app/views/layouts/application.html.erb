@@ -20,7 +20,8 @@
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "log_out" %>
                 <%= link_to "投稿画面", new_post_path, class: "new-post"%>
               <div class="user_name">
-                <b><%= "#{current_user.nickname}さんがログインしています" %></b>
+                <b><%= "#{current_user.nickname}" %></b>
+                さんがログインしています 
               </div>
             </div>
           <% else %>
