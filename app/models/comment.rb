@@ -4,5 +4,6 @@ class Comment < ApplicationRecord
 
   STATUS_VALUES = ["バカ", "死ね", "アホ"]
 
-  validates :text, exclusion: { in: STATUS_VALUES }
+  #空の投稿をできないようにする
+  validates :text, presence: true, exclusion: { in: STATUS_VALUES }
 end
