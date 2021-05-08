@@ -37,7 +37,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'メールアドレスは、@を含めないと登録できない' do
-        @user.email = '@'
+        @user.email = 'user.co.jp'
         @user.valid?
         #binding.pry
         expect(@user.errors.full_messages).to include('Email is invalid')
