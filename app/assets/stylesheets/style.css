@@ -1,17 +1,52 @@
+/* リセットCSS */
+body {
+  font-size: 14px;
+  color: #333;
+  margin: 0 auto;
+}
+h1,h2,h3,h4,h5,h6,p {
+  padding: 10px 0;
+  margin: 0;
+}
+
+ul,li {
+  padding: 0;
+  margin: 0;
+}
+/* リセットCSSここまで */
+
+.wrapper{
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 100px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
 header{
   height: 100px;
   background-color: #a6ce39;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 footer{
+  width: 100%;
   height: 100px;
   background-color: #a6ce39;
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+  margin-bottom: -100px;/*フッターの高さと等しいネガティブマージン*/
+  text-align: center;
+}
+
+.push {
+  height: 100px;
 }
 
 .fl{
   display: flex;
-  justify-content: flex-end;
-  
+  justify-content: space-around;
 }
 
 .new-registration-or-login{
@@ -22,11 +57,11 @@ footer{
   margin-right: 50px;
 }
 
-.application-name{
+/* .application-name{ */
   /* border: 1px solid black; */
-  margin-right: 700px;
-  margin-top: 20px;
-}
+  /* margin-right: 700px; */
+  /* margin-top: 20px; */
+/* } */
 
 .new-registration{
   margin-right: 5px;
@@ -43,33 +78,159 @@ footer{
   margin-bottom: 5px;
 }
 
-.log-out{
+/* .log-out{ */
   /* border: 1px solid black; */
-  margin-left: 5px;
+  /* margin-left: 5px; */
+/* } */
+
+/* ログアウト */
+.log_out{
+  margin-left: 30px;
 }
 
 .sign-in-user{
-  display: flex;
-  align-items: center;
-  /* border: 1px solid black; */
   padding: 20px;
-  /* margin-top: 20px; */
-  margin-right: 50px;
+  margin-left: 200px;
 }
 
 /* 背景画像をrailsで設置する */
 /* 背景画像  親 */
-.back-ground-image{
-  background-image: image-url('back-image4.jpg');
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
+/* .back-ground-image{ */
+  /* background-image: url('back-image4.jpg'); */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* position: relative; */
+/* } */
+
 /* 背景の上に乗せる文字  */
-.contents-row{
-  position: absolute;
-  top: 100px;
-  left: 50px;
+/* .contents-row{ */
+  /* position: absolute; */
+  /* top: 100px; */
+  /* left: 50px; */
+/* } */
+
+/* 何に関しての会議を行ったか */
+#post_title{
+  width: 500px;
+  height: 20px;
 }
 
+/* 「投稿する」ボタン */
+.form_button{
+  margin-top: 20px;
+}
 
+/* 投稿したものを横並びにする */
+.contents-row{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap; /*折り返し*/
+  justify-content: space-around;
+}
+
+/* 投稿した物を一つずつ分ける */
+.content_post{
+  border: 3px solid #eed440;
+  width: 25%;
+  text-align: center;
+  margin: 30px;
+}
+
+.more_list{
+  /* border: 1px solid black; チェック用 */
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* index.html.erb */
+.list{
+  list-style: none;
+}
+
+.user-name{
+  margin-top: 0;
+}
+
+/* 画像の幅と高さを固定 */
+.post-image{
+  height: 100px;
+  width: 100px;
+}
+
+/* 投稿画面 */
+.posts-row{
+  text-align: center;
+}
+
+/* 「会議に関しての感想など」の枠の大きさ */
+#post_text{
+  height: 200px;
+}
+
+/* 自己評価点 */
+.score{
+  border-top: 2px solid rgb(110, 110, 110);
+  border-bottom: 2px solid rgb(110, 110, 110);
+  text-align: center;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 点数の色 */
+.score_color{
+  color: dodgerblue;
+  font-size: 20px;
+}
+
+/* コメント一覧 */
+.comments{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* コメントの箇所 */
+.comment{
+  text-align: center;
+}
+
+/* コメント枠の大きさ */
+#comment_text{
+  height: 200px;
+}
+
+.comment-list{
+  display: inline-block;
+  border: 2px solid rgb(110, 110, 110);
+  width: 500px;
+  margin: 5px;
+}
+
+/* ログインのメールアドレス、パスワード */
+.field{
+  text-align: center;
+}
+
+.log_in{
+  text-align: center;
+}
+
+/* 登録、ログインボタン */
+.actions{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.sign_up{
+  text-align: center;
+}
+
+/* ユーザーの名前表示 */
+.user_name{
+  margin-left: 30px;
+  margin-top: 5px;
+}

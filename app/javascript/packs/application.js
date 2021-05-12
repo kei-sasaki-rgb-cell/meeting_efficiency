@@ -34,7 +34,7 @@ require('jquery')
  */
 
 
-window.$ = window.jQuery = require('jquery');
+window.$ = window.jQuery = require('jquery'); //jQuery呼び出し
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
