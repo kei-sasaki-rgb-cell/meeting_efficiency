@@ -9,6 +9,8 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.integer :information_id,  null: false
       t.integer :people_id,       null: false
       t.timestamps
+
+      t.references :user, foreign_key: true
     end
   end
 end

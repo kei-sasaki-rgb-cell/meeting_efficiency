@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <title>MeetingEfficiency</title>
@@ -8,35 +9,35 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
   </head>
   <body>
-    <header>
-      <div class="fl">
-          <div class="application-name">
-            <h1>MeetingEfficiency</h1>
-          </div>
-        <% if user_signed_in?%>
-              <div class="sign-in-user">
-                <div class="log-out">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-                  <%= link_to "投稿画面", new_post_path, class: "new-post"%>
-                </div>
+    <div class="wrapper">
+      <header>
+        <div class="fl">
+            <h1><%= link_to "MeetingEfficiency", root_path %></h1>
+          <% if user_signed_in?%>
+            <div class="sign-in-user">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "log_out" %>
+                <%= link_to "投稿画面", new_post_path, class: "new-post"%>
+              <div class="user_name">
+                <b><%= "#{current_user.nickname}" %></b>
+                さんがログインしています 
               </div>
-              <% else %>
-              <div class="new-registration-or-login">
-                <div class="new-registration">
-                  <%= link_to "新規登録", new_user_registration_path %>
-                </div>
-                <div class="log-in">
-                  <%= link_to "ログイン", new_user_session_path %>
-                </div>
-              </div>
-        <% end %>
-      </div>
-    </header>
-      <%= yield %>
-    <footer>
-    </footer>
+            </div>
+          <% else %>
+            <div class="sign-in-user">
+              <%= link_to "新規登録", new_user_registration_path %>
+              <%= link_to "ログイン", new_user_session_path %>
+            </div>
+          <% end %>
+        </div>
+      </header>
+        <%= yield %>
+        <footer>
+          <p>
+            Copyright MeetingEfficiency 2021.
+          </p>
+        </footer>
+    </div>
   </body>
 </html>
