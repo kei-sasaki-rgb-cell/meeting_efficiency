@@ -17,12 +17,14 @@
 
 | Colmun                   | Type           | Option            |
 | ------------------------ | -------------- | ----------------- |
-| text                     | text           |                   |
+| title                    | string         | null: false       |
+| text                     | text           | null: false       |
 | contents                 | integer        | null: false       |
 | meeting_time_id          | integer        | null: false       |
 | progress_id              | integer        | null: false       |
 | information_id           | integer        | null: false       |
 | people_id                | integer        | null: false       |
+| user                     | references     | foreign_key: true |
 
 ### Association
 
@@ -34,6 +36,9 @@
 | Colmun           | Type           | Option            |
 | ---------------- | -------------- | ----------------- |
 | text             | text           |                   |
+| evaluation       | float          |                   |
+| user             | references     | foreign_key: true |
+| post             | references     | foreign_key: true |
 
 ### Association
 
