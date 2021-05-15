@@ -8,6 +8,12 @@
             <li>
               <p><%= "投稿者: #{@post.user.nickname}さん" %></p>
               <p><%= "#{@post.title}の会議内容" %></p>
+              <p><%= "#{@post.text}" %></p>
+              <p><%= "会議の内容#{@post.content_id}点" %></p>
+              <p><%= "会議にかかった時間#{@post.meeting_time_id}点" %></p>
+              <p><%= "会議の進め方#{@post.progress_id}点" %></p>
+              <p><%= "会議での情報量#{@post.information_id}点" %></p>
+              <p><%= "会議での参加人数#{@post.people_id}点" %></p>
             </li>
               <% if current_user.id == @post.user_id %>
                 <%= link_to "編集", edit_post_path(@post.id) %>
