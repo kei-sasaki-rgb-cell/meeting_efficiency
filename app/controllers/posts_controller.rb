@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
-  before_action :set_post, only: [:edit, :show]
-  helper_method :set_sum
+    before_action :set_post, only: [:edit, :show]
+    helper_method :set_sum
 
   def index
     @users = User.all
